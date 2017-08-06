@@ -65,11 +65,23 @@ _private.loadNconf = function loadNconf(options) {
      */
     nconf.set('env', env);
 
+/*
+    console.log('process.env.PORT', process.env.PORT);
+    if (process.env.PORT) {
+        var server = nconf.get('server');
+        console.log('server', server);
+        server.port = process.env.PORT;
+        ngconf.set('server', server);
+    }
+*/
+
     // Wrap this in a check, because else nconf.get() is executed unnecessarily
     // To output this, use DEBUG=ghost:*,ghost-config
     if (_debug.enabled('ghost-config')) {
         debug(nconf.get());
     }
+
+
 
     debug('config end');
     return nconf;

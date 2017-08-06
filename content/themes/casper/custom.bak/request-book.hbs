@@ -2,23 +2,27 @@
 
 <link rel="stylesheet" type="text/css" href="{{asset "custom/bootstrap.min.css"}}" />
 
-<header class="site-header outer" style="background-image: url(/content/images/2017/08/16716347_1361272520628662_6602397473125212617_o-1.jpg)">
-
-    
+<header class="site-header outer {{#if @blog.cover_image}}" style="background-image: url({{@blog.cover_image}}){{else}}no-cover{{/if}}">
     <div class="inner">
+        <div class="site-header-content">
+            <h1 class="site-title">
+                {{#if @blog.logo}}
+                    <img class="site-logo" src="{{@blog.logo}}" alt="{{@blog.title}}" />
+                {{else}}
+                    {{@blog.title}}
+                {{/if}}
+            </h1>
+            <h2 class="site-description">{{@blog.description}}</h2>
+        </div>
         {{> "site-nav"}}
     </div>
-
-    <div class="site-header-content">
-        <h1 class="site-title">Bücher</h1>
-    </div>
-    
 </header>
 
 {{!-- The main content area --}}
 <main id="site-main" class="site-main outer" role="main">
-<p>&nbsp;</p>
     <div class="inner">
+
+        <h1>Infos zu unserern Büchern</h1>
 
     {{#if isSuccess}}
         <div>

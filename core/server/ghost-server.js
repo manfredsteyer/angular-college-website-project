@@ -69,10 +69,20 @@ GhostServer.prototype.start = function (externalApp) {
             fs.chmod(socketValues.path, socketValues.permissions);
             config.set('server:socket', socketValues);
         } else {
-            self.httpServer = rootApp.listen(
-                config.get('server').port,
-                config.get('server').host
-            );
+
+            if (process.env.PORT) {
+                self.httpServer = rootApp.listen(
+                    process.env.PORT,
+                    config.get('server').host
+                );
+            }
+            else {
+                self.httpServer = rootApp.listen(
+                    config.get('server').port,
+                    config.get('server').host
+                );
+            }
+
         }
 
         self.httpServer.on('error', function (error) {

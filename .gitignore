@@ -1,0 +1,3 @@
+**/*.db
+**/custom-config.js
+node_modules
